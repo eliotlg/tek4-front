@@ -1,0 +1,40 @@
+<tekfeed-toolbar></tekfeed-toolbar>
+<div style="position: absolute; width: 100vw; min-height: 100vh; background: black; display: flex; flex-flow: column" [ngStyle]="{'margin-top.px': toolbarService.getHeight()}">
+    <form class="example-form" style="margin-left: auto; margin-right: auto; margin-top: 25vh; display: flex; flex-flow: column" (ngSubmit)="register()">
+        <mat-form-field class="example-full-width" style="margin: 10px; font-size: x-large">
+            <mat-label>Email</mat-label>
+            <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" placeholder="Ex. pat@epitech.eu">
+            <mat-hint>Ex. pat@epitech.eu</mat-hint>
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" style="margin: 10px; font-size: x-large">
+            <mat-label>Password</mat-label>
+            <input matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher" type="password">
+            <mat-error *ngIf="passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')">
+                Please enter a valid password
+            </mat-error>
+            <mat-error *ngIf="passwordFormControl.hasError('required')">
+                Password is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" style="margin: 10px; font-size: x-large">
+            <mat-label>Password match</mat-label>
+            <input matInput [formControl]="secondPasswordFormControl" [errorStateMatcher]="matcher" type="password">
+            <mat-error *ngIf="secondPasswordFormControl.hasError('password') && !secondPasswordFormControl.hasError('required')">
+                Please enter a valid password
+            </mat-error>
+            <mat-error *ngIf="secondPasswordFormControl.hasError('required')">
+                Password is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <p *ngIf="passwordMatchError" style="margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: 10px; color: red; font-size: large">Password doesn't match</p>
+        <div style="display: flex; flex-flow: row; margin: 10px">
+            <button style="margin-left: auto; margin-right: 0; margin-top: auto; margin-bottom: autp; height: 50px; width: 50px; cursor: pointer" type="submit" class="form-submit-button"><img src="assets/img/arrow.png" style="height: inherit; width: inherit"/></button>
+        </div>
+    </form>
+</div>

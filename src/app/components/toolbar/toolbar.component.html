@@ -1,0 +1,28 @@
+<div style="width: 100vw; position: fixed; z-index: 10" [ngStyle]="{'height.px': toolbarService.getHeight()}">
+    <div [ngStyle]="{'height.px': toolbarService.getHeight() - 85}" style="background-color: rgb(0, 0, 110); display: flex">
+        <p style="margin: auto; text-align: center; vertical-align: middle; color: white">
+            {{toolbarService.getString()}}
+        </p>
+    </div>
+    <div style="height: 80px; background: rgb(20, 20, 20); display: flex">
+        <div style="padding: 10px; float: left; display: flex">
+            <a href="/" style="height: auto; margin-top: auto; margin-bottom: auto"><p style="font-size: larger; color: white">LOGO</p></a>
+        </div>
+        <div style="margin-top: auto; margin-bottom: auto; margin-right: 0px; margin-left: auto; padding: 0px 20px; display: flex; flex-flow: row">
+
+
+
+            <div class="mobile-tlb">
+                <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                    <img src="/assets/img/menu.png" alt="menu" style="height: 35px; width: 35px; margin-right: 10px; margin-top: auto; margin-bottom: auto"/>
+                </button>
+                <mat-menu #appMenu="matMenu">
+
+
+
+                </mat-menu>
+            </div>
+        </div>
+    </div>
+    <div style="height: 5px; background: linear-gradient(0.25turn, rgb(0, 0, 255),rgb(0, 0, 90))"></div>
+</div>
