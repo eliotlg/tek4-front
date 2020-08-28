@@ -5,6 +5,7 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
 import { ErrorStateMatcher } from '@angular/material/core';
 import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
 import { Router } from '@angular/router';
+import { NetworkService } from '../../../services/network/network.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -27,17 +28,28 @@ export class ForgotComponent implements OnInit {
   ]);
   matcher = new MyErrorStateMatcher();
 
+  errorMessage = "";
+  success = false;
+
   constructor(
     public toolbarService: ToolbarService,
     private router: Router,
+    private networkService: NetworkService
   ) { }
 
   ngOnInit(): void {
   }
 
   async forgotAccount(): Promise<void> {
-    // backend forgot
-    this.router.navigate(['account/login']).catch((err: any) => {
+    this.networkService.forgotPassword({email: this.emailFormControl.value}).then((data: any) => {
+      if (data.success == true) {
+        this.success = true;
+        this.errorMessage = "";
+      } else {
+        this.errorMessage = data.error;
+        this.success = false;
+      }
+    }).catch((err: any) => {
       console.error(err);
     });
   }

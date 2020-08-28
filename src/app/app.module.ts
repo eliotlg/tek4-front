@@ -38,11 +38,14 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CookieService } from 'ngx-cookie-service';
 
 /* PAGES */
   /* accounts */
     import { LoginComponent } from './pages/account/login/login.component';
     import { CreateComponent } from './pages/account/create/create.component';
+    import { ForgotComponent } from './pages/account/forgot/forgot.component';
+    import { NewPasswordComponent } from './pages/account/new-password/new-password.component';
 
 /* COMPONENTS */
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -50,7 +53,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 /* SERVICES */
 import { ToolbarService } from './services/toolbar/toolbar.service';
 import { NetworkService } from './services/network/network.service';
-import { ForgotComponent } from './pages/account/forgot/forgot.component';
+import { LoginCookieService } from './services/cookie/login-cookie.service';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +62,9 @@ import { ForgotComponent } from './pages/account/forgot/forgot.component';
     LoginComponent,
     ToolbarComponent,
     CreateComponent,
-    ForgotComponent
+    ForgotComponent,
+    NewPasswordComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +107,8 @@ import { ForgotComponent } from './pages/account/forgot/forgot.component';
   ],
   providers: [
     ToolbarService,
-    NetworkService
+    NetworkService,
+    CookieService
   ],
   bootstrap: [
     AppComponent

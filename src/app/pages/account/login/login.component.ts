@@ -5,6 +5,8 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
 import { ErrorStateMatcher } from '@angular/material/core';
 import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
 import { Router } from '@angular/router';
+import { NetworkService } from '../../../services/network/network.service';
+import { LoginCookieService } from '../../../services/cookie/login-cookie.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -30,24 +32,32 @@ export class LoginComponent implements OnInit {
     Validators.minLength(6),
   ]);
   matcher = new MyErrorStateMatcher();
+  notmatch = false;
 
   constructor(
     public toolbarService: ToolbarService,
     private router: Router,
+    private networkService: NetworkService,
+    public loginCookieService: LoginCookieService
   ) { }
 
   ngOnInit(): void {
   }
 
   async login(): Promise<void> {
-    console.log(this.emailFormControl.value);
-    console.log(this.passwordFormControl.value);
-    // backend login
+    this.networkService.login({email: this.emailFormControl.value, password: this.passwordFormControl.value}).then(async (data: any) => {
+      if (data.success == true) {
+        await this.loginCookieService.setLogin(data.cookie);
+        ;// redirect connected
+      } else {
+        this.notmatch = true;
+      }
+    }).catch((err: any) => {
+      console.error(err);
+    });
   }
 
   async forgotPassword(): Promise<void> {
-    console.log(this.emailFormControl.value);
-    console.log(this.passwordFormControl.value);
     this.router.navigate(['account/forgot']).catch((err: any) => {
       console.error(err);
     });

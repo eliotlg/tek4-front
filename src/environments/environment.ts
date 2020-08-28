@@ -6,6 +6,7 @@ export const environment = {
   production: false
 };
 
+export const COOKIE_SESSION = "tek4-session";
 export const SERVERIP = "http://localhost:3000";
 
 /*

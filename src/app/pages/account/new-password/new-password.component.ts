@@ -15,16 +15,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  selector: 'app-new-password',
+  templateUrl: './new-password.component.html',
+  styleUrls: ['./new-password.component.css']
 })
-export class CreateComponent implements OnInit {
+export class NewPasswordComponent implements OnInit {
 
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
   passwordFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(6),
@@ -37,7 +33,6 @@ export class CreateComponent implements OnInit {
 
   passwordMatchError = false;
 
-  errorMessage = "";
   success = false;
 
   constructor(
@@ -49,25 +44,20 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async register() {
+  async newPassword() {
     if (this.passwordFormControl.value != this.secondPasswordFormControl.value) {
       this.passwordMatchError = true;
     } else {
       this.passwordMatchError = false;
-      this.networkService.create({email: this.emailFormControl.value, password: this.passwordFormControl.value}).then((data: any) => {
-        if (data.success == true) {
-          this.success = true;
-          setTimeout(() => {
-            this.router.navigate(['account/login']).catch((err: any) => {
-              console.error(err);
-            });
-          }, 5000);
-        } else {
-          this.errorMessage = data.error;
-        }
+      this.networkService.newPassword({password: this.passwordFormControl.value, forgotHash: this.router.url.split('/')[3]}).then((data: any) => {
+        this.success = true;
+        setTimeout(() => {
+          this.router.navigate(['account/login']).catch((err: any) => {
+            console.error(err);
+          });
+        }, 5000);
       }).catch((err: any) => {
         console.error(err);
-        this.errorMessage = "An Error has occurred";
       })
     }
   }

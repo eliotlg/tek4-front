@@ -15,5 +15,7 @@
         <div style="display: flex; flex-flow: row; margin: 10px">
             <button style="margin-left: auto; margin-right: 0; margin-top: auto; margin-bottom: autp; height: 50px; width: 50px; cursor: pointer" type="submit" class="form-submit-button"><img src="assets/img/arrow.png" style="height: inherit; width: inherit"/></button>
         </div>
+        <p *ngIf="errorMessage.length > 0" style="font-size: large; color: red; text-align: center; width: auto; margin-left: auto; margin-right: auto">The email address is incorrect</p>
+        <p *ngIf="success" style="font-size: large; color: lime; text-align: center; width: auto; margin-left: auto; margin-right: auto">An email has been sent</p>
     </form>
 </div>
