@@ -46,6 +46,8 @@ import { CookieService } from 'ngx-cookie-service';
     import { CreateComponent } from './pages/account/create/create.component';
     import { ForgotComponent } from './pages/account/forgot/forgot.component';
     import { NewPasswordComponent } from './pages/account/new-password/new-password.component';
+  /* Accessible while logged in */
+    import { HomeComponent } from './pages/home/home.component';
 
 /* COMPONENTS */
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -54,7 +56,6 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ToolbarService } from './services/toolbar/toolbar.service';
 import { NetworkService } from './services/network/network.service';
 import { LoginCookieService } from './services/cookie/login-cookie.service';
-import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [

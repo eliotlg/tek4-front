@@ -48,7 +48,9 @@ export class LoginComponent implements OnInit {
     this.networkService.login({email: this.emailFormControl.value, password: this.passwordFormControl.value}).then(async (data: any) => {
       if (data.success == true) {
         await this.loginCookieService.setLogin(data.cookie);
-        ;// redirect connected
+        this.router.navigate(['']).catch((err: any) => {
+          console.error(err);
+        });
       } else {
         this.notmatch = true;
       }

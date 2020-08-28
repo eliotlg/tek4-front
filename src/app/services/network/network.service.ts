@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SERVERIP } from '../../../environments/environment';
+import { LoginCookieService } from '../cookie/login-cookie.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class NetworkService {
     })
   };
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, public loginCookieService: LoginCookieService) { }
 
   /* Accounts *////////////////////////////////////////////////////////////////////////////////////
   async login(body) {
@@ -30,6 +31,11 @@ export class NetworkService {
 
   async newPassword(body) {
     return await this.httpClient.post(`${SERVERIP}/account/newPassword`, body, this.httpOptions).toPromise();
+  }
+
+  async isLogged() {
+    let session = await this.loginCookieService.getLogin();
+    return await this.httpClient.post(`${SERVERIP}/account/isLoggedIn`, {cookie: session}, this.httpOptions).toPromise();
   }
   /* */////////////////////////////////////////////////////////////////////////////////////////////
 

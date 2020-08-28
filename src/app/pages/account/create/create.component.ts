@@ -49,7 +49,7 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async register() {
+  async register(): Promise<void> {
     if (this.passwordFormControl.value != this.secondPasswordFormControl.value) {
       this.passwordMatchError = true;
     } else {
