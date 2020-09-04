@@ -1,5 +1,5 @@
 <div class="chatbox-shape chatbox" style="background-color: var(--color-black-3)">
-    <input matInput [formControl]="chatFormControl" type="text" style="height: 50px; margin: 15px; width: calc(100% - 30px - 20px); background-color: var(--color-black-4); border-radius: 15px; border: none; outline: none; appearance: none; padding-left: 10px; padding-right: 10px; color: white; font-size: large">
+    <input (keyup.enter)="chatSubmit()" matInput [formControl]="chatFormControl" type="text" style="height: 50px; margin: 15px; width: calc(100% - 30px - 20px); background-color: var(--color-black-4); border-radius: 15px; border: none; outline: none; appearance: none; padding-left: 10px; padding-right: 10px; color: white; font-size: large">
     <div style="height: auto; margin: 15px; width: calc(100% - 30px)">
         <!-- HISTORY -->
     </div>

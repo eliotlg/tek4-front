@@ -39,4 +39,16 @@ export class NetworkService {
   }
   /* */////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+  /* CHATS *////////////////////////////////////////////////////////////////////////////////////////////
+  async submitChat(message, id) {
+    let session = await this.loginCookieService.getLogin();
+    return await this.httpClient.post(`${SERVERIP}/chat/submit`, {message: message, id: id, session: session}, this.httpOptions).toPromise();
+  }
+
+  async retrieveChat(id) {
+    return await this.httpClient.get(`${SERVERIP}/chat/retrieve/${id}`, this.httpOptions).toPromise();
+  }
+  /* */////////////////////////////////////////////////////////////////////////////////////////////
 }

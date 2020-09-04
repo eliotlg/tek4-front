@@ -10,11 +10,16 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
 })
 export class ChatboxComponent implements OnInit {
 
-  chatFormControl = new FormControl('');
+  public chatFormControl = new FormControl('');
+  public id;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  async chatSubmit(): Promise<void> {
+    console.log(this.chatFormControl.value);
   }
 
 }
