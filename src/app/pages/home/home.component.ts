@@ -3,6 +3,7 @@ import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
 import { ToolbarService } from '../../services/toolbar/toolbar.service';
 import { Router } from '@angular/router';
 import { NetworkService } from '../../services/network/network.service';
+import { ChatboxComponent } from '../../components/chatbox/chatbox.component';
 
 @Component({
   selector: 'app-home',

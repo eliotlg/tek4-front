@@ -56,6 +56,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ToolbarService } from './services/toolbar/toolbar.service';
 import { NetworkService } from './services/network/network.service';
 import { LoginCookieService } from './services/cookie/login-cookie.service';
+import { ChatboxComponent } from './components/chatbox/chatbox.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { LoginCookieService } from './services/cookie/login-cookie.service';
     CreateComponent,
     ForgotComponent,
     NewPasswordComponent,
-    HomeComponent
+    HomeComponent,
+    ChatboxComponent
   ],
   imports: [
     BrowserModule,

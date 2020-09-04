@@ -1,10 +1,10 @@
 <div style="width: 100vw; position: fixed; z-index: 10" [ngStyle]="{'height.px': toolbarService.getHeight()}">
-    <div [ngStyle]="{'height.px': toolbarService.getHeight() - 85}" style="background-color: rgb(0, 0, 110); display: flex">
-        <p style="margin: auto; text-align: center; vertical-align: middle; color: white">
+    <div [ngStyle]="{'height.px': toolbarService.getHeight() - 85}" style="background-color: var(--color-dark-orange); display: flex">
+        <p style="margin: auto; text-align: center; vertical-align: middle; color: var(--color-white-1)">
             {{toolbarService.getString()}}
         </p>
     </div>
-    <div style="height: 80px; background: rgb(20, 20, 20); display: flex">
+    <div style="height: 85px; background-color: var(--color-black-3); display: flex">
         <div style="padding: 10px; float: left; display: flex">
             <a href="/" style="height: auto; margin-top: auto; margin-bottom: auto"><p style="font-size: larger; color: white">LOGO</p></a>
         </div>
@@ -24,5 +24,4 @@
             </div>
         </div>
     </div>
-    <div style="height: 5px; background: linear-gradient(0.25turn, rgb(0, 0, 255),rgb(0, 0, 90))"></div>
 </div>
